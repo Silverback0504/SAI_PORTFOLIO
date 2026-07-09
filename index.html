@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sai Raj — Full Stack Developer</title>
+<title>Sai Raj — Senior Software Executive</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -24,19 +24,16 @@
   --shadow:   rgba(0,0,0,0.06);
   --shadow2:  rgba(0,0,0,0.12);
 
-  /* Dark text */
   --t1:   #111110;
   --t2:   #4a4844;
   --t3:   #9a9690;
   --t4:   #c8c4bc;
 
-  /* Accent — deep ink blue */
   --acc:      #1a2744;
   --acc2:     #2e4070;
   --acc3:     #3d56a0;
   --acc-r:    26,39,68;
 
-  /* Warm mid */
   --warm:     #8a6a3c;
   --warm-r:   138,106,60;
 
@@ -49,9 +46,6 @@
   --max: 1200px;
 }
 
-/* ═══════════════════════════════════
-   BASE
-═══════════════════════════════════ */
 *,*::before,*::after { margin:0;padding:0;box-sizing:border-box; }
 html { scroll-behavior:smooth; }
 body {
@@ -65,9 +59,7 @@ body {
 ::selection { background: var(--acc); color: #fff; }
 a { text-decoration:none; color:inherit; }
 
-/* ═══════════════════════════════════
-   CURSOR
-═══════════════════════════════════ */
+/* CURSOR */
 #cur {
   position:fixed; width:8px; height:8px;
   background:var(--acc); border-radius:50%;
@@ -86,301 +78,136 @@ body:has(a:hover) #cur-ring,
 body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(var(--acc-r),.45); }
 @media(max-width:768px){ #cur,#cur-ring{display:none} body{cursor:auto} }
 
-/* ═══════════════════════════════════
-   PROGRESS BAR
-═══════════════════════════════════ */
 #prog {
   position:fixed; top:0; left:0; height:2px; width:0;
   background:var(--acc); z-index:9999; transition:width .05s linear;
 }
 
-/* ═══════════════════════════════════
-   3D NAVBAR
-═══════════════════════════════════ */
-.nav-scene {
-  position:fixed; top:0; left:0; right:0; z-index:1000;
-  height:var(--nav-h);
-  perspective:1000px;
-  perspective-origin:50% -80px;
-}
-.nav-plate {
-  position:absolute; inset:0;
-  transform-origin:top center;
-  transform:rotateX(0deg);
-  transition:background .5s, box-shadow .5s, transform .7s var(--ease), backdrop-filter .5s;
-}
-.nav-plate.stuck {
-  background:rgba(246,245,240,.94);
-  backdrop-filter:blur(24px) saturate(1.6);
-  box-shadow:
-    0 1px 0 var(--border2),
-    0 4px 24px var(--shadow),
-    0 12px 48px rgba(0,0,0,.04);
-  transform:rotateX(-1.5deg);
-}
-.nav-in {
-  max-width:var(--max); margin:0 auto;
-  height:var(--nav-h); display:flex; align-items:center; justify-content:space-between;
-  padding:0 40px;
-}
-.nav-logo {
-  display:flex; flex-direction:column;
-}
-.nav-logo-name {
-  font-family:var(--serif); font-size:1.1rem; font-style:italic;
-  color:var(--acc); letter-spacing:-.2px; line-height:1;
-}
-.nav-logo-sub {
-  font-family:var(--mono); font-size:.5rem; letter-spacing:.2em;
-  text-transform:uppercase; color:var(--t3); margin-top:2px;
-}
+/* NAVBAR */
+.nav-scene { position:fixed; top:0; left:0; right:0; z-index:1000; height:var(--nav-h); perspective:1000px; perspective-origin:50% -80px; }
+.nav-plate { position:absolute; inset:0; transform-origin:top center; transform:rotateX(0deg); transition:background .5s, box-shadow .5s, transform .7s var(--ease), backdrop-filter .5s; }
+.nav-plate.stuck { background:rgba(246,245,240,.94); backdrop-filter:blur(24px) saturate(1.6); box-shadow:0 1px 0 var(--border2), 0 4px 24px var(--shadow), 0 12px 48px rgba(0,0,0,.04); transform:rotateX(-1.5deg); }
+.nav-in { max-width:var(--max); margin:0 auto; height:var(--nav-h); display:flex; align-items:center; justify-content:space-between; padding:0 40px; }
+.nav-logo { display:flex; flex-direction:column; }
+.nav-logo-name { font-family:var(--serif); font-size:1.1rem; font-style:italic; color:var(--acc); letter-spacing:-.2px; line-height:1; }
+.nav-logo-sub { font-family:var(--mono); font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:var(--t3); margin-top:2px; }
 .nav-links { display:flex; align-items:center; gap:4px; list-style:none; }
-.nav-links a {
-  font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase;
-  color:var(--t3); padding:7px 13px; border-radius:5px; border:1px solid transparent;
-  transition:color .25s, background .25s, border-color .25s;
-}
-.nav-links a:hover,
-.nav-links a.active { color:var(--acc); background:rgba(var(--acc-r),.05); border-color:rgba(var(--acc-r),.1); }
-.nav-cta {
-  display:flex; align-items:center; gap:7px;
-  font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase;
-  padding:8px 20px; border-radius:6px;
-  background:var(--acc); color:#fff;
-  border:1.5px solid var(--acc);
-  transition:background .3s, transform .3s var(--ease), box-shadow .3s;
-}
-.nav-cta:hover {
-  background:var(--acc2); border-color:var(--acc2);
-  transform:translateY(-1px);
-  box-shadow:0 4px 16px rgba(var(--acc-r),.25);
-}
+.nav-links a { font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; color:var(--t3); padding:7px 13px; border-radius:5px; border:1px solid transparent; transition:color .25s, background .25s, border-color .25s; }
+.nav-links a:hover, .nav-links a.active { color:var(--acc); background:rgba(var(--acc-r),.05); border-color:rgba(var(--acc-r),.1); }
+.nav-cta { display:flex; align-items:center; gap:7px; font-family:var(--mono); font-size:.6rem; letter-spacing:.14em; text-transform:uppercase; padding:8px 20px; border-radius:6px; background:var(--acc); color:#fff; border:1.5px solid var(--acc); transition:background .3s, transform .3s var(--ease), box-shadow .3s; }
+.nav-cta:hover { background:var(--acc2); border-color:var(--acc2); transform:translateY(-1px); box-shadow:0 4px 16px rgba(var(--acc-r),.25); }
 .nav-cta svg { flex-shrink:0; }
 
-/* ═══════════════════════════════════
-   PAGE GRID — LinkedIn layout
-═══════════════════════════════════ */
-.page {
+/* HERO — 3D SIGNATURE */
+.hero {
+  position:relative;
   max-width:var(--max); margin:0 auto;
-  padding:calc(var(--nav-h) + 28px) 40px 80px;
-  display:grid;
-  grid-template-columns:272px 1fr 228px;
-  gap:18px;
-  align-items:start;
-}
-
-/* ═══════════════════════════════════
-   SHARED CARD
-═══════════════════════════════════ */
-.card {
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
+  padding:calc(var(--nav-h) + 28px) 40px 0;
+  height:340px;
+  border-radius:16px;
   overflow:hidden;
-  transition:border-color .35s, box-shadow .4s, transform .4s var(--ease);
 }
-.card:hover {
-  border-color:var(--border2);
-  box-shadow:0 4px 24px var(--shadow), 0 1px 4px var(--shadow);
-  transform:translateY(-2px);
+.hero-inner {
+  position:relative; height:100%; border-radius:16px; overflow:hidden;
+  background:var(--acc);
+  display:flex; align-items:center;
+  box-shadow:0 12px 48px rgba(var(--acc-r),.28), 0 2px 8px rgba(0,0,0,.1);
 }
+#hero-canvas { position:absolute; inset:0; width:100%; height:100%; display:block; }
+.hero-fade {
+  position:absolute; inset:0;
+  background:linear-gradient(100deg, rgba(15,21,38,.86) 0%, rgba(15,21,38,.55) 42%, rgba(15,21,38,.1) 75%);
+  pointer-events:none;
+}
+.hero-content { position:relative; z-index:2; padding:0 48px; max-width:620px; }
+.hero-eyebrow { font-family:var(--mono); font-size:.6rem; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,255,255,.55); margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+.hero-eyebrow .hdot { width:6px; height:6px; border-radius:50%; background:#3fd17a; animation:pulse 2.5s infinite; flex-shrink:0; }
+.hero-title { font-family:var(--serif); font-size:2.5rem; line-height:1.15; color:#fff; letter-spacing:-1px; margin-bottom:16px; }
+.hero-title em { font-style:italic; color:#a9bdfb; }
+.hero-sub { font-size:.92rem; color:rgba(255,255,255,.72); line-height:1.75; max-width:480px; margin-bottom:22px; }
+.hero-actions { display:flex; gap:10px; flex-wrap:wrap; }
+.hero-btn { font-family:var(--mono); font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; padding:11px 20px; border-radius:7px; transition:all .25s var(--ease); }
+.hero-btn.p { background:#fff; color:var(--acc); }
+.hero-btn.p:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.25); }
+.hero-btn.s { border:1.5px solid rgba(255,255,255,.35); color:#fff; }
+.hero-btn.s:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.6); }
+@media(max-width:768px){ .hero{height:auto;padding:calc(var(--nav-h)+16px) 20px 0} .hero-inner{padding:32px 0} .hero-content{padding:0 24px} .hero-title{font-size:1.9rem} #hero-canvas{opacity:.6} }
+
+/* PAGE GRID */
+.page { max-width:var(--max); margin:0 auto; padding:28px 40px 80px; display:grid; grid-template-columns:272px 1fr 228px; gap:18px; align-items:start; }
+
+/* SHARED CARD */
+.card { background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:border-color .35s, box-shadow .4s, transform .4s var(--ease); }
+.card:hover { border-color:var(--border2); box-shadow:0 4px 24px var(--shadow), 0 1px 4px var(--shadow); transform:translateY(-2px); }
 .c-head { padding:24px 26px 0; }
 .c-body { padding:0 26px 24px; }
-.c-sec {
-  font-family:var(--mono); font-size:.56rem; letter-spacing:.22em; text-transform:uppercase;
-  color:var(--t3); margin-bottom:4px;
-  display:flex; align-items:center; gap:8px;
-}
+.c-sec { font-family:var(--mono); font-size:.56rem; letter-spacing:.22em; text-transform:uppercase; color:var(--t3); margin-bottom:4px; display:flex; align-items:center; gap:8px; }
 .c-sec::before { content:''; width:14px; height:1.5px; background:var(--warm); flex-shrink:0; }
-.c-title {
-  font-family:var(--serif); font-size:1.18rem; font-weight:700;
-  letter-spacing:-.4px; color:var(--t1); margin-top:6px; margin-bottom:18px; line-height:1.3;
-}
+.c-title { font-family:var(--serif); font-size:1.18rem; font-weight:700; letter-spacing:-.4px; color:var(--t1); margin-top:6px; margin-bottom:18px; line-height:1.3; }
 .c-div { height:1px; background:var(--border); margin:16px 0; }
 
-/* ═══════════════════════════════════
-   LEFT SIDEBAR
-═══════════════════════════════════ */
-.side-l {
-  position:sticky; top:calc(var(--nav-h) + 16px);
-  display:flex; flex-direction:column; gap:14px;
-}
-
-/* Profile card */
-.profile-banner {
-  height:76px; position:relative; overflow:hidden;
-  background:var(--acc);
-}
-.profile-banner::before {
-  content:''; position:absolute; inset:0;
-  background:
-    repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0px, rgba(255,255,255,.04) 1px, transparent 1px, transparent 20px),
-    repeating-linear-gradient(-45deg, rgba(255,255,255,.04) 0px, rgba(255,255,255,.04) 1px, transparent 1px, transparent 20px);
-}
-.profile-banner::after {
-  content:''; position:absolute; right:-40px; bottom:-40px;
-  width:140px; height:140px; border-radius:50%;
-  background:rgba(255,255,255,.05);
-}
-
+/* LEFT SIDEBAR */
+.side-l { position:sticky; top:calc(var(--nav-h) + 16px); display:flex; flex-direction:column; gap:14px; }
+.profile-banner { height:76px; position:relative; overflow:hidden; background:var(--acc); }
+.profile-banner::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0px, rgba(255,255,255,.04) 1px, transparent 1px, transparent 20px), repeating-linear-gradient(-45deg, rgba(255,255,255,.04) 0px, rgba(255,255,255,.04) 1px, transparent 1px, transparent 20px); }
+.profile-banner::after { content:''; position:absolute; right:-40px; bottom:-40px; width:140px; height:140px; border-radius:50%; background:rgba(255,255,255,.05); }
 .profile-body { padding:0 20px 20px; }
-
-/* Monogram — no photo */
-.monogram {
-  width:64px; height:64px; border-radius:10px;
-  background:var(--acc); border:3px solid var(--card);
-  display:flex; align-items:center; justify-content:center;
-  margin-top:-32px; margin-bottom:14px;
-  box-shadow:0 4px 12px rgba(var(--acc-r),.25);
-  position:relative; z-index:1;
-}
-.mono-text {
-  font-family:var(--serif); font-size:1.4rem; font-style:italic;
-  color:#fff; line-height:1; letter-spacing:-.5px;
-}
-.p-name {
-  font-family:var(--serif); font-size:1.15rem; font-weight:700;
-  letter-spacing:-.3px; color:var(--t1); margin-bottom:3px;
-}
+.monogram { width:64px; height:64px; border-radius:10px; background:var(--acc); border:3px solid var(--card); display:flex; align-items:center; justify-content:center; margin-top:-32px; margin-bottom:14px; box-shadow:0 4px 12px rgba(var(--acc-r),.25); position:relative; z-index:1; }
+.mono-text { font-family:var(--serif); font-size:1.4rem; font-style:italic; color:#fff; line-height:1; letter-spacing:-.5px; }
+.p-name { font-family:var(--serif); font-size:1.15rem; font-weight:700; letter-spacing:-.3px; color:var(--t1); margin-bottom:3px; }
 .p-role { font-size:.78rem; color:var(--t2); font-weight:400; margin-bottom:10px; line-height:1.5; }
-
-.p-loc {
-  display:flex; align-items:center; gap:5px;
-  font-family:var(--mono); font-size:.57rem; letter-spacing:.08em; color:var(--t3);
-}
+.p-loc { display:flex; align-items:center; gap:5px; font-family:var(--mono); font-size:.57rem; letter-spacing:.08em; color:var(--t3); }
 .p-div { height:1px; background:var(--border); margin:14px 0; }
-
-.p-stat {
-  display:flex; justify-content:space-between; align-items:center;
-  padding:5px 0; font-size:.77rem; color:var(--t2);
-}
+.p-stat { display:flex; justify-content:space-between; align-items:center; padding:5px 0; font-size:.77rem; color:var(--t2); }
 .p-stat strong { color:var(--acc); font-weight:600; font-family:var(--mono); font-size:.8rem; }
-
-.p-open {
-  margin-top:14px; display:flex; align-items:center; gap:8px;
-  padding:9px 13px; border-radius:7px;
-  background:rgba(var(--acc-r),.04); border:1px solid rgba(var(--acc-r),.12);
-  font-family:var(--mono); font-size:.58rem; letter-spacing:.08em; color:var(--acc2);
-}
+.p-open { margin-top:14px; display:flex; align-items:center; gap:8px; padding:9px 13px; border-radius:7px; background:rgba(var(--acc-r),.04); border:1px solid rgba(var(--acc-r),.12); font-family:var(--mono); font-size:.58rem; letter-spacing:.08em; color:var(--acc2); }
 .open-dot { width:6px; height:6px; border-radius:50%; background:#22a05a; flex-shrink:0; animation:pulse 2.5s infinite; }
-
-/* Quick links */
-.q-link {
-  display:flex; align-items:center; gap:10px;
-  padding:8px 0; color:var(--t2); font-size:.8rem;
-  border-bottom:1px solid var(--border);
-  transition:color .25s;
-}
+.q-link { display:flex; align-items:center; gap:10px; padding:8px 0; color:var(--t2); font-size:.8rem; border-bottom:1px solid var(--border); transition:color .25s; }
 .q-link:last-child { border-bottom:none; padding-bottom:0; }
 .q-link:hover { color:var(--acc); }
 .q-link:hover .q-link-ico { color:var(--acc); }
 .q-link-ico { width:18px; color:var(--t3); flex-shrink:0; }
+.status-pill { display:flex; align-items:center; gap:8px; padding:11px 14px; border-radius:8px; background:rgba(34,160,90,.06); border:1px solid rgba(34,160,90,.18); font-size:.75rem; color:#1a8a4a; font-weight:500; }
 
-/* Status */
-.status-pill {
-  display:flex; align-items:center; gap:8px;
-  padding:11px 14px; border-radius:8px;
-  background:rgba(34,160,90,.06); border:1px solid rgba(34,160,90,.18);
-  font-size:.75rem; color:#1a8a4a; font-weight:500;
-}
-
-/* ═══════════════════════════════════
-   FEED CENTER
-═══════════════════════════════════ */
+/* FEED CENTER */
 .feed { display:flex; flex-direction:column; gap:14px; }
-
-/* About */
-.about-p {
-  font-size:.88rem; color:var(--t2); line-height:2; font-weight:400;
-}
+.about-p { font-size:.88rem; color:var(--t2); line-height:2; font-weight:400; }
 .about-p + .about-p { margin-top:10px; }
 .about-p strong { color:var(--t1); font-weight:600; }
 
-/* Skill groups */
 .sk-group { margin-bottom:18px; }
 .sk-group:last-child { margin-bottom:0; }
-.sk-group-lbl {
-  font-family:var(--mono); font-size:.58rem; letter-spacing:.16em;
-  text-transform:uppercase; color:var(--t3); margin-bottom:10px;
-  display:flex; align-items:center; gap:7px;
-}
+.sk-group-lbl { font-family:var(--mono); font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--t3); margin-bottom:10px; display:flex; align-items:center; gap:7px; }
 .sk-group-lbl svg { color:var(--warm); flex-shrink:0; }
 .chips { display:flex; flex-wrap:wrap; gap:6px; }
-.chip {
-  font-family:var(--mono); font-size:.59rem; letter-spacing:.04em;
-  padding:5px 12px; border-radius:4px;
-  background:var(--bg1); border:1px solid var(--border2); color:var(--t2);
-  transition:background .2s, color .2s, border-color .2s, transform .2s var(--ease);
-}
-.chip:hover {
-  background:rgba(var(--acc-r),.06); border-color:rgba(var(--acc-r),.18);
-  color:var(--acc); transform:translateY(-1px);
-}
+.chip { font-family:var(--mono); font-size:.59rem; letter-spacing:.04em; padding:5px 12px; border-radius:4px; background:var(--bg1); border:1px solid var(--border2); color:var(--t2); transition:background .2s, color .2s, border-color .2s, transform .2s var(--ease); }
+.chip:hover { background:rgba(var(--acc-r),.06); border-color:rgba(var(--acc-r),.18); color:var(--acc); transform:translateY(-1px); }
 
-/* Experience */
 .exp-timeline { padding-left:24px; position:relative; }
-.exp-item {
-  position:relative; padding:0 0 28px 20px;
-  border-left:1.5px solid var(--border2);
-}
+.exp-item { position:relative; padding:0 0 28px 20px; border-left:1.5px solid var(--border2); }
 .exp-item:last-child { border-left-color:transparent; padding-bottom:0; }
-.exp-dot {
-  position:absolute; left:-6px; top:4px;
-  width:10px; height:10px; border-radius:50%;
-  background:var(--card); border:2px solid var(--acc);
-  box-shadow:0 0 0 3px var(--card);
-}
+.exp-dot { position:absolute; left:-6px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--card); border:2px solid var(--acc); box-shadow:0 0 0 3px var(--card); }
 .exp-dot.now { background:var(--acc); }
-.exp-co {
-  font-family:var(--serif); font-size:1rem; font-weight:700;
-  letter-spacing:-.2px; color:var(--t1); margin-bottom:2px;
-}
+.exp-co { font-family:var(--serif); font-size:1rem; font-weight:700; letter-spacing:-.2px; color:var(--t1); margin-bottom:2px; }
 .exp-role { font-size:.8rem; color:var(--t2); }
 .exp-meta { display:flex; gap:7px; margin:8px 0 12px; flex-wrap:wrap; }
-.exp-tag {
-  font-family:var(--mono); font-size:.55rem; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--t3); padding:3px 9px; border-radius:3px;
-  background:var(--bg1); border:1px solid var(--border2);
-}
+.exp-tag { font-family:var(--mono); font-size:.55rem; letter-spacing:.1em; text-transform:uppercase; color:var(--t3); padding:3px 9px; border-radius:3px; background:var(--bg1); border:1px solid var(--border2); }
 .exp-tag.now { color:var(--acc2); background:rgba(var(--acc-r),.05); border-color:rgba(var(--acc-r),.2); }
 .exp-pts { list-style:none; display:flex; flex-direction:column; gap:7px; }
-.exp-pts li {
-  font-size:.82rem; color:var(--t2); line-height:1.85; font-weight:400;
-  display:flex; gap:10px;
-}
+.exp-pts li { font-size:.82rem; color:var(--t2); line-height:1.85; font-weight:400; display:flex; gap:10px; }
 .exp-pts li::before { content:''; width:14px; height:1.5px; background:var(--warm); flex-shrink:0; margin-top:11px; }
 
-/* Projects */
-.proj-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
-.proj-card {
-  background:var(--card2); border:1px solid var(--border);
-  border-radius:10px; padding:20px 18px;
-  transition:border-color .3s, box-shadow .35s, transform .35s var(--ease);
-  position:relative; overflow:hidden;
-}
-.proj-card:hover {
-  border-color:rgba(var(--acc-r),.2);
-  box-shadow:0 8px 28px var(--shadow2);
-  transform:translateY(-4px);
-}
-.proj-card::before {
-  content:''; position:absolute; top:0; left:0; right:0; height:2px;
-  background:linear-gradient(90deg,var(--acc),var(--acc3),transparent);
-  transform:scaleX(0); transform-origin:left;
-  transition:transform .5s var(--ease);
-}
+.proj-grid { display:grid; grid-template-columns:1fr; gap:12px; }
+.proj-card { background:var(--card2); border:1px solid var(--border); border-radius:10px; padding:24px 24px; transition:border-color .3s, box-shadow .35s, transform .35s var(--ease); position:relative; overflow:hidden; }
+.proj-card:hover { border-color:rgba(var(--acc-r),.2); box-shadow:0 8px 28px var(--shadow2); transform:translateY(-4px); }
+.proj-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,var(--acc),var(--acc3),transparent); transform:scaleX(0); transform-origin:left; transition:transform .5s var(--ease); }
 .proj-card:hover::before { transform:scaleX(1); }
 .proj-ico { margin-bottom:12px; color:var(--acc); }
-.proj-name { font-family:var(--serif); font-size:.95rem; font-weight:700; letter-spacing:-.2px; color:var(--t1); margin-bottom:7px; }
-.proj-desc { font-size:.77rem; color:var(--t2); line-height:1.85; }
-.proj-chips { display:flex; flex-wrap:wrap; gap:5px; margin-top:12px; }
-.pchip {
-  font-family:var(--mono); font-size:.54rem; letter-spacing:.05em;
-  padding:3px 9px; border-radius:3px;
-  background:rgba(var(--acc-r),.05); border:1px solid rgba(var(--acc-r),.14); color:var(--acc2);
-}
+.proj-name { font-family:var(--serif); font-size:1.05rem; font-weight:700; letter-spacing:-.2px; color:var(--t1); margin-bottom:8px; }
+.proj-desc { font-size:.82rem; color:var(--t2); line-height:1.9; max-width:640px; }
+.proj-chips { display:flex; flex-wrap:wrap; gap:5px; margin-top:14px; }
+.pchip { font-family:var(--mono); font-size:.54rem; letter-spacing:.05em; padding:3px 9px; border-radius:3px; background:rgba(var(--acc-r),.05); border:1px solid rgba(var(--acc-r),.14); color:var(--acc2); }
 
-/* Education */
 .edu-item { display:flex; gap:16px; align-items:flex-start; padding:14px 0; border-bottom:1px solid var(--border); }
 .edu-item:last-child { border-bottom:none; padding-bottom:0; }
 .edu-icon { width:42px; height:42px; border-radius:8px; flex-shrink:0; background:var(--bg1); border:1px solid var(--border2); display:flex; align-items:center; justify-content:center; color:var(--acc); }
@@ -388,44 +215,25 @@ body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(va
 .edu-inst { font-size:.77rem; color:var(--t2); }
 .edu-yr { font-family:var(--mono); font-size:.55rem; letter-spacing:.1em; color:var(--t3); margin-top:5px; }
 
-/* Achievements */
 .ach-row { display:flex; gap:10px; }
-.ach-pill {
-  flex:1; background:var(--card2); border:1px solid var(--border);
-  border-radius:8px; padding:18px 14px; text-align:center;
-  transition:border-color .3s, transform .35s var(--ease), box-shadow .35s;
-}
+.ach-pill { flex:1; background:var(--card2); border:1px solid var(--border); border-radius:8px; padding:18px 14px; text-align:center; transition:border-color .3s, transform .35s var(--ease), box-shadow .35s; }
 .ach-pill:hover { border-color:rgba(var(--acc-r),.2); transform:translateY(-3px); box-shadow:0 6px 20px var(--shadow); }
 .ach-n { font-family:var(--serif); font-size:1.8rem; font-weight:700; color:var(--acc); line-height:1; margin-bottom:6px; }
 .ach-l { font-size:.7rem; color:var(--t2); line-height:1.6; }
 
-/* Availability banner — MY ADD */
-.avail-banner {
-  display:flex; align-items:center; gap:16px;
-  padding:18px 20px; border-radius:10px;
-  background:linear-gradient(120deg, rgba(var(--acc-r),.04) 0%, rgba(var(--acc-r),.02) 100%);
-  border:1px solid rgba(var(--acc-r),.12);
-  margin-bottom:14px;
-}
+.avail-banner { display:flex; align-items:center; gap:16px; padding:18px 20px; border-radius:10px; background:linear-gradient(120deg, rgba(var(--acc-r),.04) 0%, rgba(var(--acc-r),.02) 100%); border:1px solid rgba(var(--acc-r),.12); margin-bottom:14px; }
 .avail-ico { width:38px; height:38px; border-radius:8px; background:rgba(var(--acc-r),.08); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--acc); }
 .avail-text { font-size:.82rem; color:var(--t2); }
 .avail-text strong { color:var(--t1); font-weight:600; }
 
-/* Contact rows */
 .contact-list { display:flex; flex-direction:column; gap:9px; }
-.cr {
-  display:flex; align-items:center; gap:12px;
-  padding:11px 14px; border-radius:8px;
-  background:var(--card2); border:1px solid var(--border);
-  transition:border-color .3s, background .3s, box-shadow .3s;
-}
+.cr { display:flex; align-items:center; gap:12px; padding:11px 14px; border-radius:8px; background:var(--card2); border:1px solid var(--border); transition:border-color .3s, background .3s, box-shadow .3s; }
 .cr:hover { border-color:rgba(var(--acc-r),.22); background:rgba(var(--acc-r),.03); box-shadow:0 2px 12px var(--shadow); }
 .cr-ico { width:32px; height:32px; border-radius:6px; background:var(--bg1); border:1px solid var(--border2); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--acc); }
 .cr-lbl { font-family:var(--mono); font-size:.53rem; letter-spacing:.12em; text-transform:uppercase; color:var(--t3); }
 .cr-val { font-size:.8rem; font-weight:500; color:var(--t1); margin-top:1px; }
 .cr:hover .cr-val { color:var(--acc); }
 
-/* CV window */
 .cv-win { background:var(--card2); border:1px solid var(--border); border-radius:8px; overflow:hidden; margin-top:12px; }
 .cv-bar { display:flex; align-items:center; gap:7px; padding:9px 13px; background:var(--bg2); border-bottom:1px solid var(--border); }
 .db { width:9px; height:9px; border-radius:50%; }
@@ -433,81 +241,129 @@ body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(va
 .cv-fname { font-family:var(--mono); font-size:.55rem; letter-spacing:.1em; color:var(--t3); margin-left:auto; }
 .cv-iframe { display:block; width:100%; height:380px; border:none; background:#fff; }
 .cv-acts { display:flex; gap:7px; padding:11px 13px; border-top:1px solid var(--border); }
-.cv-btn {
-  font-family:var(--mono); font-size:.57rem; letter-spacing:.1em; text-transform:uppercase;
-  padding:7px 15px; border-radius:4px; border:1px solid var(--border2);
-  background:transparent; color:var(--t2); cursor:none; transition:all .2s;
-}
+.cv-btn { font-family:var(--mono); font-size:.57rem; letter-spacing:.1em; text-transform:uppercase; padding:7px 15px; border-radius:4px; border:1px solid var(--border2); background:transparent; color:var(--t2); cursor:none; transition:all .2s; }
 .cv-btn:hover { border-color:rgba(var(--acc-r),.3); color:var(--acc); background:rgba(var(--acc-r),.04); }
 .cv-btn.p { background:var(--acc); border-color:var(--acc); color:#fff; }
 .cv-btn.p:hover { background:var(--acc2); border-color:var(--acc2); }
 
-/* Footer strip */
-.feed-footer {
-  text-align:center;
-  padding:20px 0 4px;
-  font-family:var(--mono); font-size:.55rem; letter-spacing:.18em;
-  text-transform:uppercase; color:var(--t4);
-}
+.feed-footer { text-align:center; padding:20px 0 4px; font-family:var(--mono); font-size:.55rem; letter-spacing:.18em; text-transform:uppercase; color:var(--t4); }
 
-/* ═══════════════════════════════════
-   RIGHT SIDEBAR
-═══════════════════════════════════ */
-.side-r {
-  position:sticky; top:calc(var(--nav-h) + 16px);
-  display:flex; flex-direction:column; gap:14px;
-}
+/* RIGHT SIDEBAR */
+.side-r { position:sticky; top:calc(var(--nav-h) + 16px); display:flex; flex-direction:column; gap:14px; }
 .sc { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:18px 18px; transition:border-color .3s, box-shadow .3s; }
 .sc:hover { border-color:var(--border2); box-shadow:0 2px 16px var(--shadow); }
 .sc-title { font-family:var(--mono); font-size:.56rem; letter-spacing:.2em; text-transform:uppercase; color:var(--t3); margin-bottom:14px; display:flex; align-items:center; gap:7px; }
 .sc-title svg { color:var(--warm); }
-
-/* Stack rows */
 .st-item { display:flex; align-items:center; justify-content:space-between; padding:7px 0; border-bottom:1px solid var(--border); }
 .st-item:last-child { border-bottom:none; }
 .st-name { font-size:.78rem; color:var(--t2); display:flex; align-items:center; gap:8px; }
 .st-name svg { color:var(--acc3); flex-shrink:0; }
 .st-badge { font-family:var(--mono); font-size:.52rem; letter-spacing:.06em; padding:2px 8px; border-radius:3px; background:rgba(var(--acc-r),.05); border:1px solid rgba(var(--acc-r),.14); color:var(--acc2); }
-
-/* Highlights */
 .hl-item { display:flex; gap:9px; padding:8px 0; border-bottom:1px solid var(--border); align-items:flex-start; }
 .hl-item:last-child { border-bottom:none; }
 .hl-ico { width:28px; height:28px; border-radius:5px; background:var(--bg1); border:1px solid var(--border2); display:flex; align-items:center; justify-content:center; flex-shrink:0; color:var(--acc); margin-top:1px; }
 .hl-text { font-size:.73rem; color:var(--t2); line-height:1.65; }
 .hl-text strong { color:var(--t1); font-weight:600; }
 .hl-sub { font-family:var(--mono); font-size:.53rem; letter-spacing:.06em; color:var(--t3); margin-top:2px; }
-
-/* Industries */
 .ind-chips { display:flex; flex-wrap:wrap; gap:5px; }
 .ind-chip { font-family:var(--mono); font-size:.55rem; letter-spacing:.06em; padding:4px 10px; border-radius:3px; background:var(--bg1); border:1px solid var(--border2); color:var(--t2); transition:all .2s; }
 .ind-chip:hover { background:rgba(var(--acc-r),.06); color:var(--acc); border-color:rgba(var(--acc-r),.18); }
 
-/* ═══════════════════════════════════
-   REVEAL
-═══════════════════════════════════ */
+/* REVEAL */
 .rv  { opacity:0; transform:translateY(20px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
 .rvl { opacity:0; transform:translateX(-20px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
 .rvr { opacity:0; transform:translateX(20px); transition:opacity .7s var(--ease), transform .7s var(--ease); }
 .rv.vis, .rvl.vis, .rvr.vis { opacity:1; transform:none; }
+.stagger.vis .exp-item, .stagger.vis .proj-card, .stagger.vis .edu-item { animation:riseIn .6s var(--ease) both; }
+.stagger .exp-item:nth-child(1), .stagger .proj-card:nth-child(1) { animation-delay:.05s; }
+.stagger .exp-item:nth-child(2), .stagger .proj-card:nth-child(2) { animation-delay:.15s; }
+.stagger .exp-item:nth-child(3), .stagger .proj-card:nth-child(3) { animation-delay:.25s; }
+.stagger .exp-item:nth-child(4) { animation-delay:.35s; }
+@keyframes riseIn { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:none} }
 
-/* Scrollbar */
 ::-webkit-scrollbar { width:3px; }
 ::-webkit-scrollbar-track { background:var(--bg1); }
 ::-webkit-scrollbar-thumb { background:var(--acc); border-radius:2px; }
 
-/* ═══════════════════════════════════
-   KEYFRAMES
-═══════════════════════════════════ */
 @keyframes pulse { 0%,100%{box-shadow:0 0 0 0 rgba(34,160,90,.4)} 50%{box-shadow:0 0 0 5px rgba(34,160,90,0)} }
 
 /* ═══════════════════════════════════
-   RESPONSIVE
+   CHATBOT — "Ask Zenith"
 ═══════════════════════════════════ */
+#chat-fab {
+  position:fixed; right:26px; bottom:26px; z-index:2000;
+  display:flex; align-items:center; gap:10px;
+  padding:13px 20px 13px 16px; border-radius:30px;
+  background:var(--acc); color:#fff; border:none; cursor:none;
+  box-shadow:0 8px 28px rgba(var(--acc-r),.35), 0 2px 8px rgba(0,0,0,.15);
+  font-family:var(--mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+  transition:transform .3s var(--ease), box-shadow .3s, background .35s;
+}
+#chat-fab:hover { transform:translateY(-3px); box-shadow:0 12px 34px rgba(var(--acc-r),.4); background:var(--acc2); }
+#chat-fab .fab-dot { width:7px; height:7px; border-radius:50%; background:#3fd17a; animation:pulse 2.5s infinite; }
+#chat-fab svg { flex-shrink:0; }
+
+/* Icon that morphs from a chat bubble into a robot face on hover */
+.fab-icon-wrap { position:relative; width:16px; height:16px; flex-shrink:0; }
+.fab-icon { position:absolute; inset:0; transition:opacity .3s var(--ease), transform .4s var(--ease); }
+.fab-icon.chat { opacity:1; transform:rotate(0deg) scale(1); }
+.fab-icon.bot { opacity:0; transform:rotate(-70deg) scale(.35); }
+#chat-fab:hover .fab-icon.chat { opacity:0; transform:rotate(70deg) scale(.35); }
+#chat-fab:hover .fab-icon.bot { opacity:1; transform:rotate(0deg) scale(1); animation:botWiggle .55s var(--ease) .05s; }
+@keyframes botWiggle { 0%{transform:rotate(0) scale(1)} 30%{transform:rotate(-10deg) scale(1.12)} 60%{transform:rotate(8deg) scale(1.05)} 100%{transform:rotate(0) scale(1)} }
+.bot-eye { transform-box:fill-box; transform-origin:center; animation:botBlink 3.2s infinite; }
+.bot-eye:nth-of-type(2) { animation-delay:.12s; }
+@keyframes botBlink { 0%,88%,100%{transform:scaleY(1)} 93%{transform:scaleY(.15)} }
+
+#chat-panel {
+  position:fixed; right:26px; bottom:96px; z-index:2000;
+  width:360px; max-width:calc(100vw - 40px); height:500px; max-height:calc(100vh - 140px);
+  background:var(--card); border:1px solid var(--border2); border-radius:16px;
+  box-shadow:0 24px 64px rgba(0,0,0,.22), 0 4px 16px rgba(0,0,0,.12);
+  display:flex; flex-direction:column; overflow:hidden;
+  opacity:0; transform:translateY(16px) scale(.97); pointer-events:none;
+  transition:opacity .3s var(--ease), transform .35s var(--ease);
+}
+#chat-panel.open { opacity:1; transform:none; pointer-events:auto; }
+.chat-head { background:var(--acc); color:#fff; padding:16px 18px; display:flex; align-items:center; gap:12px; flex-shrink:0; }
+.chat-avatar { width:36px; height:36px; border-radius:9px; background:rgba(255,255,255,.14); display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-style:italic; font-size:.95rem; flex-shrink:0; color:#fff; }
+.chat-head-txt { flex:1; min-width:0; }
+.chat-head-name { font-size:.82rem; font-weight:600; }
+.chat-head-sub { font-family:var(--mono); font-size:.56rem; letter-spacing:.08em; color:rgba(255,255,255,.6); margin-top:2px; display:flex; align-items:center; gap:5px; }
+.chat-head-sub .hdot2 { width:5px; height:5px; border-radius:50%; background:#3fd17a; }
+#chat-close { background:none; border:none; color:rgba(255,255,255,.7); cursor:none; padding:4px; border-radius:6px; transition:background .2s, color .2s; }
+#chat-close:hover { background:rgba(255,255,255,.12); color:#fff; }
+
+#chat-body { flex:1; overflow-y:auto; padding:16px 16px 8px; display:flex; flex-direction:column; gap:12px; background:var(--card2); }
+.msg { max-width:84%; font-size:.79rem; line-height:1.65; padding:10px 13px; border-radius:12px; animation:riseIn .35s var(--ease) both; }
+.msg.bot { align-self:flex-start; background:var(--card); border:1px solid var(--border); color:var(--t1); border-bottom-left-radius:4px; }
+.msg.user { align-self:flex-end; background:var(--acc); color:#fff; border-bottom-right-radius:4px; }
+.msg.typing { display:flex; gap:4px; align-items:center; padding:12px 14px; }
+.msg.typing span { width:5px; height:5px; border-radius:50%; background:var(--t3); animation:tbounce 1.1s infinite; }
+.msg.typing span:nth-child(2){ animation-delay:.15s } .msg.typing span:nth-child(3){ animation-delay:.3s }
+@keyframes tbounce { 0%,60%,100%{transform:translateY(0);opacity:.4} 30%{transform:translateY(-4px);opacity:1} }
+
+.chat-suggest { display:flex; flex-wrap:wrap; gap:6px; padding:4px 16px 12px; flex-shrink:0; background:var(--card2); border-top:1px solid var(--border); }
+.sg-chip { font-family:var(--mono); font-size:.56rem; letter-spacing:.03em; padding:6px 11px; border-radius:20px; background:var(--card); border:1px solid var(--border2); color:var(--t2); cursor:none; transition:all .2s; }
+.sg-chip:hover { border-color:rgba(var(--acc-r),.3); color:var(--acc); background:rgba(var(--acc-r),.04); }
+
+#chat-form { display:flex; gap:8px; padding:12px 14px; border-top:1px solid var(--border); background:var(--card); flex-shrink:0; }
+#chat-input { flex:1; border:1px solid var(--border2); border-radius:9px; padding:10px 13px; font-family:var(--sans); font-size:.8rem; color:var(--t1); background:var(--card2); outline:none; transition:border-color .2s; cursor:text; }
+#chat-input:focus { border-color:var(--acc3); }
+#chat-send { background:var(--acc); border:none; color:#fff; width:38px; border-radius:9px; display:flex; align-items:center; justify-content:center; cursor:none; flex-shrink:0; transition:background .2s; }
+#chat-send:hover { background:var(--acc2); }
+#chat-send:disabled { opacity:.5; }
+
+@media(max-width:600px){
+  #chat-panel{ right:14px; left:14px; width:auto; bottom:88px; }
+  #chat-fab{ right:16px; bottom:16px; padding:12px 16px 12px 14px; }
+}
+
 @media(max-width:1060px){
-  .page{grid-template-columns:1fr;padding:calc(var(--nav-h)+20px) 20px 60px;}
+  .page{grid-template-columns:1fr;padding:20px 20px 60px;}
   .side-l,.side-r{position:static;}
   .nav-links{display:none;}
-  .proj-grid{grid-template-columns:1fr;}
+  .hero{padding:calc(var(--nav-h)+16px) 20px 0}
 }
 @media(max-width:600px){
   .nav-in{padding:0 20px;}
@@ -528,7 +384,7 @@ body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(va
     <div class="nav-in">
       <div class="nav-logo">
         <span class="nav-logo-name">Sai Raj</span>
-        <span class="nav-logo-sub">Full Stack Developer</span>
+        <span class="nav-logo-sub">Senior Software Executive</span>
       </div>
       <ul class="nav-links">
         <li><a href="#about" class="active">About</a></li>
@@ -539,7 +395,6 @@ body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(va
         <li><a href="#contact">Contact</a></li>
       </ul>
       <a href="cv.pdf" download class="nav-cta">
-        <!-- Download icon -->
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Resume
       </a>
@@ -547,68 +402,68 @@ body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(va
   </div>
 </div>
 
+<!-- ══ HERO — three.js signature ══ -->
+<section class="hero rv">
+  <div class="hero-inner">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-fade"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span class="hdot"></span>Open to new opportunities — Noida, India</div>
+      <h1 class="hero-title">Systems that <em>hold up</em><br>under real load.</h1>
+      <p class="hero-sub">Full stack engineer building enterprise dashboards, CRMs and telemetry platforms for telecom, manufacturing and IoT — from Acer &amp; Lenovo production lines to NOC ticketing desks.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="hero-btn p">Get in touch</a>
+        <a href="#experience" class="hero-btn s">See the work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ══ MAIN PAGE ══ -->
 <div class="page">
 
 <!-- ════ LEFT SIDEBAR ════ -->
 <aside class="side-l rvl">
 
-  <!-- Profile Card -->
   <div class="card" style="overflow:hidden">
     <div class="profile-banner"></div>
     <div class="profile-body">
-      <div class="monogram">
-        <span class="mono-text">SR</span>
-      </div>
+      <div class="monogram"><span class="mono-text">SR</span></div>
       <div class="p-name">Sai Raj</div>
-      <div class="p-role">Full Stack Developer<br>React · Node.js · .NET · SQL Server</div>
+      <div class="p-role">Senior Software Executive<br>React · Node.js · .NET · SQL Server</div>
       <div class="p-loc">
-        <!-- Location pin SVG -->
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         Noida, Uttar Pradesh, India
       </div>
       <div class="p-div"></div>
       <div class="p-stat"><span>Experience</span><strong>2+ yrs</strong></div>
       <div class="p-stat"><span>Companies</span><strong>3</strong></div>
-      <div class="p-stat"><span>Projects</span><strong>5+</strong></div>
-      <div class="p-stat"><span>Perf. boost</span><strong>↑40%</strong></div>
-      <div class="p-open">
-        <span class="open-dot"></span>
-        Open to opportunities
-      </div>
+      <div class="p-stat"><span>Enterprise systems</span><strong>5+</strong></div>
+      <div class="p-stat"><span>Data transparency</span><strong>100%</strong></div>
+      <div class="p-open"><span class="open-dot"></span>Open to opportunities</div>
     </div>
   </div>
 
-  <!-- Quick Links -->
   <div class="card" style="padding:18px 20px">
     <div class="c-sec" style="margin-bottom:12px">Links</div>
     <a href="mailto:sairajpandiya@gmail.com" class="q-link">
-      <span class="q-link-ico">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-      </span>
+      <span class="q-link-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span>
       sairajpandiya@gmail.com
     </a>
     <a href="https://linkedin.com/in/sairaj05" target="_blank" class="q-link">
-      <span class="q-link-ico">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-      </span>
+      <span class="q-link-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></span>
       linkedin.com/in/sairaj05
     </a>
     <a href="tel:+918887749394" class="q-link">
-      <span class="q-link-ico">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      </span>
+      <span class="q-link-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
       +91 888 774 9394
     </a>
     <a href="cv.pdf" download class="q-link">
-      <span class="q-link-ico">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-      </span>
+      <span class="q-link-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg></span>
       Download Resume
     </a>
   </div>
 
-  <!-- Status -->
   <div class="status-pill card" style="padding:12px 16px;border-radius:12px">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#22a05a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
     <div style="font-size:.74rem; color:#1a8a4a; font-weight:500;">Available for new roles</div>
@@ -620,114 +475,79 @@ body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(va
 <!-- ════ CENTER FEED ════ -->
 <main class="feed">
 
-  <!-- Availability Banner — MY ADD -->
   <div class="avail-banner rv" style="transition-delay:.02s">
-    <div class="avail-ico">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-    </div>
-    <div class="avail-text">
-      <strong>Actively looking for new opportunities.</strong> Full Stack Developer with 2+ years in enterprise, telecom & IoT domains — available to join immediately.
-    </div>
+    <div class="avail-ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+    <div class="avail-text"><strong>Actively looking for new opportunities.</strong> Senior Software Executive with 2+ years in enterprise, telecom &amp; IoT domains — available to join immediately. Have a question? Ask Zenith, the chat assistant in the corner — it answers straight from my resume.</div>
   </div>
 
-  <!-- ABOUT -->
   <div class="card rv" id="about" style="transition-delay:.06s">
     <div class="c-head">
       <div class="c-sec">01 — About</div>
       <div class="c-title">Building the web, one system at a time.</div>
     </div>
     <div class="c-body">
-      <p class="about-p">I'm a <strong>Full Stack Developer</strong> with 2+ years of experience shipping production-grade applications across enterprise, telecom, and IoT domains.</p>
-      <p class="about-p">I specialize in <strong>scalable, high-performance systems</strong> — from real-time dashboards for Acer & Lenovo to secure REST APIs and IoT platforms. My work sits at the intersection of <strong>clean architecture</strong> and polished user experience.</p>
-      <p class="about-p">I care equally about code quality and product quality — great software should be invisible in the best way possible.</p>
+      <p class="about-p">I'm a <strong>Senior Software Executive</strong> with 2+ years of experience designing, building, and deploying scalable web applications across enterprise, telecom, and IoT domains.</p>
+      <p class="about-p">I specialize in <strong>internal platforms that companies run on</strong> — CRM modules, work-report and inventory dashboards, NOC ticketing systems, and field-employee tracking — built on React.js, Next.js, Node.js and .NET, backed by SQL Server.</p>
+      <p class="about-p">I care equally about code quality and product quality — great internal tooling should be invisible in the best way possible, and it should be trusted with real operational data.</p>
     </div>
   </div>
 
-  <!-- SKILLS -->
   <div class="card rv" id="skills" style="transition-delay:.1s">
-    <div class="c-head">
-      <div class="c-sec">02 — Skills</div>
-    </div>
+    <div class="c-head"><div class="c-sec">02 — Skills</div></div>
     <div class="c-body" style="padding-top:14px">
       <div class="sk-group">
-        <div class="sk-group-lbl">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          Languages
-        </div>
-        <div class="chips">
-          <span class="chip">JavaScript</span>
-          <span class="chip">C#</span>
-          <span class="chip">SQL</span>
-          <span class="chip">Python</span>
-        </div>
+        <div class="sk-group-lbl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Languages</div>
+        <div class="chips"><span class="chip">JavaScript</span><span class="chip">C#</span><span class="chip">SQL</span><span class="chip">Python</span></div>
       </div>
       <div class="sk-group">
-        <div class="sk-group-lbl">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          Frontend
-        </div>
-        <div class="chips">
-          <span class="chip">React.js</span>
-          <span class="chip">Next.js</span>
-          <span class="chip">Angular</span>
-          <span class="chip">HTML5</span>
-          <span class="chip">CSS3</span>
-          <span class="chip">Bootstrap</span>
-        </div>
+        <div class="sk-group-lbl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18M9 21V9"/></svg>Frontend</div>
+        <div class="chips"><span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">Angular</span><span class="chip">HTML5</span><span class="chip">CSS3</span><span class="chip">Bootstrap</span></div>
       </div>
       <div class="sk-group">
-        <div class="sk-group-lbl">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-          Backend
-        </div>
-        <div class="chips">
-          <span class="chip">Node.js</span>
-          <span class="chip">.NET</span>
-          <span class="chip">REST APIs</span>
-          <span class="chip">SQL Server</span>
-          <span class="chip">MySQL</span>
-        </div>
+        <div class="sk-group-lbl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>Backend</div>
+        <div class="chips"><span class="chip">Node.js</span><span class="chip">.NET</span><span class="chip">REST APIs</span><span class="chip">JWT Auth</span><span class="chip">RBAC</span></div>
+      </div>
+      <div class="sk-group">
+        <div class="sk-group-lbl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>DevOps &amp; Deployment</div>
+        <div class="chips"><span class="chip">CI/CD Pipelines</span><span class="chip">AWS</span><span class="chip">Linux (Ubuntu)</span><span class="chip">Nginx</span><span class="chip">PM2</span><span class="chip">Docker</span></div>
       </div>
       <div class="sk-group" style="margin-bottom:0">
-        <div class="sk-group-lbl">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          Tools & Concepts
-        </div>
-        <div class="chips">
-          <span class="chip">Git</span>
-          <span class="chip">Docker</span>
-          <span class="chip">Postman</span>
-          <span class="chip">Power BI</span>
-          <span class="chip">JWT / RBAC</span>
-          <span class="chip">System Design</span>
-          <span class="chip">IoT</span>
-        </div>
+        <div class="sk-group-lbl"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Tools &amp; Methodologies</div>
+        <div class="chips"><span class="chip">Git</span><span class="chip">Postman</span><span class="chip">Power BI</span><span class="chip">System Design</span><span class="chip">Performance Optimization</span></div>
       </div>
     </div>
   </div>
 
-  <!-- EXPERIENCE -->
   <div class="card rv" id="experience" style="transition-delay:.14s">
-    <div class="c-head">
-      <div class="c-sec">03 — Experience</div>
-    </div>
+    <div class="c-head"><div class="c-sec">03 — Experience</div></div>
     <div class="c-body" style="padding-top:16px">
-      <div class="exp-timeline">
+      <div class="exp-timeline stagger">
 
         <div class="exp-item">
           <span class="exp-dot now"></span>
-          <div class="exp-co">Dixon Technologies</div>
-          <div class="exp-role">Software Developer · Noida, India</div>
-          <div class="exp-meta">
-            <span class="exp-tag now">May 2025 — Present</span>
-            <span class="exp-tag">Current</span>
-          </div>
+          <div class="exp-co">Onremote Telecom</div>
+          <div class="exp-role">Senior Software Executive · Noida, India</div>
+          <div class="exp-meta"><span class="exp-tag now">Jun 2026 — Present</span><span class="exp-tag">Current</span></div>
           <ul class="exp-pts">
-            <li>Built & maintained master dashboards for Acer enabling real-time production-line monitoring and analytics.</li>
-            <li>Designed scalable data-entry forms for Lenovo systems with enterprise-grade reliability and validation.</li>
-            <li>Architected secure REST APIs in .NET & SQL Server with JWT auth and role-based access control.</li>
-            <li>Drove ~40% performance improvement through backend optimization and SQL query tuning.</li>
-            <li>Collaborated cross-functionally to ship production features on tight deadlines.</li>
+            <li>Architected a comprehensive Work Report Dashboard giving 100% data transparency into daily, weekly and monthly employee productivity across the organization.</li>
+            <li>Engineered core CRM enterprise modules to optimize operational workflow and client data management.</li>
+            <li>Designed and integrated automated field-employee tracking systems for asset tracking and resource management.</li>
+            <li>Built a centralized Customer Ticket Control interface for the Network Operations Center (NOC) team, reducing resolution response times.</li>
+            <li>Built an enterprise-grade Inventory Dashboard to monitor, audit and manage physical hardware infrastructure.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <span class="exp-dot"></span>
+          <div class="exp-co">Dizon Technologies</div>
+          <div class="exp-role">Software Developer · Noida, India</div>
+          <div class="exp-meta"><span class="exp-tag">May 2025 — May 2026</span></div>
+          <ul class="exp-pts">
+            <li>Developed and maintained master dashboards for Acer systems, enabling real-time monitoring and analytics.</li>
+            <li>Designed scalable web forms for daily operational data updates across Lenovo systems.</li>
+            <li>Built secure, optimized REST APIs in .NET and SQL Server for enterprise-level application workflows.</li>
+            <li>Improved system performance and data processing efficiency through targeted backend optimization.</li>
+            <li>Collaborated closely with cross-functional technical teams to deliver scalable, production-ready features.</li>
           </ul>
         </div>
 
@@ -735,14 +555,12 @@ body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(va
           <span class="exp-dot"></span>
           <div class="exp-co">Onremote Telecom</div>
           <div class="exp-role">Full Stack Developer · Noida, India</div>
-          <div class="exp-meta">
-            <span class="exp-tag">Nov 2023 — Nov 2024</span>
-          </div>
+          <div class="exp-meta"><span class="exp-tag">Nov 2023 — Nov 2024</span></div>
           <ul class="exp-pts">
-            <li>Built a responsive internal platform for operational workflows and real-time tracking with React UI.</li>
-            <li>Developed the company website with React.js + Bootstrap, achieving high Lighthouse scores.</li>
-            <li>Integrated RESTful APIs ensuring seamless data flow and optimal response times.</li>
-            <li>Reduced critical bugs through code reviews, structured debugging, and continuous optimization.</li>
+            <li>Developed a responsive internal web platform for automated operational workflows and tracking metrics.</li>
+            <li>Built and deployed the official company website with a modern, responsive UI using React.js and Bootstrap.</li>
+            <li>Designed and integrated external APIs with frontend interfaces, ensuring reliable, real-time data flow.</li>
+            <li>Optimized application performance and minimized bugs through structured testing and debugging.</li>
           </ul>
         </div>
 
@@ -750,12 +568,10 @@ body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(va
           <span class="exp-dot"></span>
           <div class="exp-co">UNOS</div>
           <div class="exp-role">Web Developer · Noida, India</div>
-          <div class="exp-meta">
-            <span class="exp-tag">Jun 2023 — Nov 2023</span>
-          </div>
+          <div class="exp-meta"><span class="exp-tag">Jun 2023 — Nov 2023</span></div>
           <ul class="exp-pts">
-            <li>Delivered two responsive corporate websites with strong accessibility, performance, and cross-device fidelity.</li>
-            <li>Optimized Time to Interactive and ensured cross-browser compatibility across all major browsers.</li>
+            <li>Developed and deployed two responsive corporate websites with improved performance and core accessibility standards.</li>
+            <li>Ensured comprehensive cross-browser compatibility and optimized client-side asset loading speeds.</li>
           </ul>
         </div>
 
@@ -763,114 +579,50 @@ body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(va
     </div>
   </div>
 
-  <!-- PROJECTS -->
   <div class="card rv" id="projects" style="transition-delay:.18s">
-    <div class="c-head">
-      <div class="c-sec">04 — Selected Work</div>
-    </div>
+    <div class="c-head"><div class="c-sec">04 — Selected Work</div></div>
     <div class="c-body" style="padding-top:14px">
-      <div class="proj-grid">
-
-        <div class="proj-card" style="grid-column:span 2">
-          <div class="proj-ico">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-          </div>
-          <div class="proj-name">Task Management Application</div>
-          <div class="proj-desc">Full-stack app with real-time task tracking, JWT authentication, and role-based workflows. Optimized MySQL for concurrent users with clean architecture and instant UI feedback.</div>
-          <div class="proj-chips">
-            <span class="pchip">React.js</span>
-            <span class="pchip">Node.js</span>
-            <span class="pchip">MySQL</span>
-            <span class="pchip">JWT Auth</span>
-            <span class="pchip">RBAC</span>
-          </div>
-        </div>
-
+      <div class="proj-grid stagger">
         <div class="proj-card">
-          <div class="proj-ico">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <div class="proj-name">Remote Plant Monitor</div>
-          <div class="proj-desc">IoT-based real-time monitoring with automated smart-watering logic driven by live sensor data.</div>
-          <div class="proj-chips">
-            <span class="pchip">IoT</span>
-            <span class="pchip">Python</span>
-            <span class="pchip">Real-time</span>
-          </div>
+          <div class="proj-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          <div class="proj-name">Remote Plant Monitoring System (IoT)</div>
+          <div class="proj-desc">End-to-end IoT system for real-time environmental monitoring and automation — streaming multi-sensor telemetry and triggering smart watering based on live soil, light and moisture data.</div>
+          <div class="proj-chips"><span class="pchip">IoT</span><span class="pchip">Python</span><span class="pchip">Real-time Telemetry</span><span class="pchip">Automation</span></div>
         </div>
-
-        <div class="proj-card">
-          <div class="proj-ico">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
-          </div>
-          <div class="proj-name">AI Voice Assistant</div>
-          <div class="proj-desc">Python voice assistant using speech recognition to automate system tasks — natural language to action.</div>
-          <div class="proj-chips">
-            <span class="pchip">Python</span>
-            <span class="pchip">Speech API</span>
-            <span class="pchip">AI / ML</span>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
 
-  <!-- EDUCATION -->
   <div class="card rv" id="education" style="transition-delay:.22s">
-    <div class="c-head">
-      <div class="c-sec">05 — Education</div>
-    </div>
+    <div class="c-head"><div class="c-sec">05 — Education</div></div>
     <div class="c-body" style="padding-top:14px">
       <div class="edu-item">
-        <div class="edu-icon">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        </div>
+        <div class="edu-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
         <div>
-          <div class="edu-deg">B.Tech — Computer Science & Engineering</div>
-          <div class="edu-inst">Galgotia College of Engineering & Technology, Noida</div>
+          <div class="edu-deg">B.Tech — Computer Science &amp; Engineering</div>
+          <div class="edu-inst">Galgotia College of Engineering &amp; Technology, Noida</div>
           <div class="edu-yr">Aug 2019 — May 2023</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ACHIEVEMENTS -->
   <div class="card rv" style="transition-delay:.26s">
-    <div class="c-head">
-      <div class="c-sec">06 — Achievements</div>
-    </div>
+    <div class="c-head"><div class="c-sec">06 — Achievements</div></div>
     <div class="c-body" style="padding-top:14px">
       <div class="ach-row">
-        <div class="ach-pill">
-          <div class="ach-n">↑40%</div>
-          <div class="ach-l">Performance boost via SQL & backend optimization</div>
-        </div>
-        <div class="ach-pill">
-          <div class="ach-n">3+</div>
-          <div class="ach-l">Enterprise dashboards live in Acer & Lenovo production</div>
-        </div>
-        <div class="ach-pill">
-          <div class="ach-n">2+</div>
-          <div class="ach-l">Years shipping scalable apps across multiple industries</div>
-        </div>
+        <div class="ach-pill"><div class="ach-n">100%</div><div class="ach-l">Data transparency delivered via the Work Report Dashboard</div></div>
+        <div class="ach-pill"><div class="ach-n">5+</div><div class="ach-l">Enterprise systems shipped — CRM, tracking, ticketing, inventory &amp; dashboards</div></div>
+        <div class="ach-pill"><div class="ach-n">2+</div><div class="ach-l">Years shipping scalable apps across telecom, enterprise &amp; IoT</div></div>
       </div>
     </div>
   </div>
 
-  <!-- CV -->
   <div class="card rv" style="transition-delay:.3s">
-    <div class="c-head">
-      <div class="c-sec">07 — Resume</div>
-    </div>
+    <div class="c-head"><div class="c-sec">07 — Resume</div></div>
     <div class="c-body" style="padding-top:8px">
       <div class="cv-win">
-        <div class="cv-bar">
-          <div class="db dr"></div>
-          <div class="db dy"></div>
-          <div class="db dg"></div>
-          <div class="cv-fname">Sai-Raj-CV.pdf</div>
-        </div>
+        <div class="cv-bar"><div class="db dr"></div><div class="db dy"></div><div class="db dg"></div><div class="cv-fname">cv.pdf</div></div>
         <iframe class="cv-iframe" src="cv.pdf#toolbar=0" title="Resume"></iframe>
         <div class="cv-acts">
           <a href="cv.pdf" target="_blank" class="cv-btn">Open ↗</a>
@@ -880,7 +632,6 @@ body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(va
     </div>
   </div>
 
-  <!-- CONTACT -->
   <div class="card rv" id="contact" style="transition-delay:.34s">
     <div class="c-head">
       <div class="c-sec">08 — Get In Touch</div>
@@ -889,165 +640,126 @@ body:has(button:hover) #cur-ring { width:58px; height:58px; border-color:rgba(va
     <div class="c-body" style="padding-top:18px">
       <div class="contact-list">
         <a href="mailto:sairajpandiya@gmail.com" class="cr">
-          <div class="cr-ico">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </div>
-          <div>
-            <div class="cr-lbl">Email</div>
-            <div class="cr-val">sairajpandiya@gmail.com</div>
-          </div>
+          <div class="cr-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+          <div><div class="cr-lbl">Email</div><div class="cr-val">sairajpandiya@gmail.com</div></div>
           <svg style="margin-left:auto;color:var(--t4);flex-shrink:0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="https://linkedin.com/in/sairaj05" target="_blank" class="cr">
-          <div class="cr-ico">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-          </div>
-          <div>
-            <div class="cr-lbl">LinkedIn</div>
-            <div class="cr-val">linkedin.com/in/sairaj05</div>
-          </div>
+          <div class="cr-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></div>
+          <div><div class="cr-lbl">LinkedIn</div><div class="cr-val">linkedin.com/in/sairaj05</div></div>
           <svg style="margin-left:auto;color:var(--t4);flex-shrink:0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="tel:+918887749394" class="cr">
-          <div class="cr-ico">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <div>
-            <div class="cr-lbl">Phone</div>
-            <div class="cr-val">+91 888 774 9394</div>
-          </div>
+          <div class="cr-ico"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.5 2 2 0 0 1 3.6 1.3h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.98-.98a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><div class="cr-lbl">Phone</div><div class="cr-val">+91 888 774 9394</div></div>
           <svg style="margin-left:auto;color:var(--t4);flex-shrink:0" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
     </div>
   </div>
 
-  <div class="feed-footer">© 2025 Sai Raj &nbsp;·&nbsp; Built with intention</div>
+  <div class="feed-footer">© 2026 Sai Raj &nbsp;·&nbsp; Built with intention</div>
 
 </main>
 
 <!-- ════ RIGHT SIDEBAR ════ -->
 <aside class="side-r rvr">
 
-  <!-- Primary Stack -->
   <div class="sc">
-    <div class="sc-title">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-      Stack
-    </div>
-    <div class="st-item">
-      <span class="st-name">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        React.js
-      </span>
-      <span class="st-badge">Frontend</span>
-    </div>
-    <div class="st-item">
-      <span class="st-name">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-        Node.js
-      </span>
-      <span class="st-badge">Backend</span>
-    </div>
-    <div class="st-item">
-      <span class="st-name">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-        .NET / C#
-      </span>
-      <span class="st-badge">Backend</span>
-    </div>
-    <div class="st-item">
-      <span class="st-name">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>
-        SQL Server
-      </span>
-      <span class="st-badge">DB</span>
-    </div>
-    <div class="st-item">
-      <span class="st-name">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
-        Next.js
-      </span>
-      <span class="st-badge">Full Stack</span>
-    </div>
-    <div class="st-item">
-      <span class="st-name">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-        Docker
-      </span>
-      <span class="st-badge">DevOps</span>
-    </div>
+    <div class="sc-title"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Stack</div>
+    <div class="st-item"><span class="st-name"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>React.js</span><span class="st-badge">Frontend</span></div>
+    <div class="st-item"><span class="st-name"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="8" x="2" y="2" rx="2"/><rect width="20" height="8" x="2" y="14" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>Node.js</span><span class="st-badge">Backend</span></div>
+    <div class="st-item"><span class="st-name"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>.NET / C#</span><span class="st-badge">Backend</span></div>
+    <div class="st-item"><span class="st-name"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3"/></svg>SQL Server</span><span class="st-badge">DB</span></div>
+    <div class="st-item"><span class="st-name"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>Next.js</span><span class="st-badge">Full Stack</span></div>
+    <div class="st-item"><span class="st-name"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>Docker &amp; AWS</span><span class="st-badge">DevOps</span></div>
   </div>
 
-  <!-- Highlights -->
   <div class="sc">
-    <div class="sc-title">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-      Highlights
-    </div>
-    <div class="hl-item">
-      <div class="hl-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
-      <div>
-        <div class="hl-text"><strong>40%</strong> perf. improvement at Dixon Technologies</div>
-        <div class="hl-sub">Current role</div>
-      </div>
-    </div>
-    <div class="hl-item">
-      <div class="hl-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-      <div>
-        <div class="hl-text">Dashboards live in <strong>Acer & Lenovo</strong> production</div>
-        <div class="hl-sub">Enterprise delivery</div>
-      </div>
-    </div>
-    <div class="hl-item">
-      <div class="hl-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <div>
-        <div class="hl-text">Full platform built at <strong>Onremote Telecom</strong></div>
-        <div class="hl-sub">Nov 2023 – Nov 2024</div>
-      </div>
-    </div>
-    <div class="hl-item">
-      <div class="hl-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-      <div>
-        <div class="hl-text">B.Tech CSE — <strong>Galgotias</strong></div>
-        <div class="hl-sub">2019 – 2023</div>
-      </div>
-    </div>
+    <div class="sc-title"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Highlights</div>
+    <div class="hl-item"><div class="hl-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div><div><div class="hl-text"><strong>100%</strong> transparency via the Work Report Dashboard</div><div class="hl-sub">Onremote Telecom — current</div></div></div>
+    <div class="hl-item"><div class="hl-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><div><div class="hl-text">Dashboards live in <strong>Acer &amp; Lenovo</strong> production</div><div class="hl-sub">Dizon Technologies</div></div></div>
+    <div class="hl-item"><div class="hl-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><div class="hl-text">Full platform built at <strong>Onremote Telecom</strong></div><div class="hl-sub">Nov 2023 – Nov 2024</div></div></div>
+    <div class="hl-item"><div class="hl-ico"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div><div><div class="hl-text">B.Tech CSE — <strong>Galgotias</strong></div><div class="hl-sub">2019 – 2023</div></div></div>
   </div>
 
-  <!-- Industries -->
   <div class="sc">
-    <div class="sc-title">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-      Industries
-    </div>
-    <div class="ind-chips">
-      <span class="ind-chip">Enterprise</span>
-      <span class="ind-chip">Telecom</span>
-      <span class="ind-chip">Healthcare</span>
-      <span class="ind-chip">IoT</span>
-      <span class="ind-chip">Manufacturing</span>
-    </div>
+    <div class="sc-title"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Industries</div>
+    <div class="ind-chips"><span class="ind-chip">Enterprise</span><span class="ind-chip">Telecom</span><span class="ind-chip">Manufacturing</span><span class="ind-chip">IoT</span><span class="ind-chip">NOC / Ops</span></div>
   </div>
 
-  <!-- Currently Learning — MY ADD -->
   <div class="sc">
-    <div class="sc-title">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-      Currently Learning
-    </div>
-    <div class="ind-chips">
-      <span class="ind-chip">TypeScript</span>
-      <span class="ind-chip">AWS</span>
-      <span class="ind-chip">Redis</span>
-      <span class="ind-chip">Microservices</span>
-    </div>
+    <div class="sc-title"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Currently Learning</div>
+    <div class="ind-chips"><span class="ind-chip">TypeScript</span><span class="ind-chip">Redis</span><span class="ind-chip">Microservices</span><span class="ind-chip">Kubernetes</span></div>
+  </div>
+
+  <div class="sc">
+    <div class="sc-title"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Ask about my work</div>
+    <div class="hl-text" style="margin-bottom:10px">Curious about a specific project, stack choice, or timeline? Chat with Zenith in the corner — it only answers from my actual resume.</div>
+    <button class="hero-btn s" style="background:var(--acc);color:#fff;border:none;width:100%;text-align:center" onclick="window.__openChat()">Open chat</button>
   </div>
 
 </aside>
 
 </div><!-- /page -->
 
+<!-- ══ CHATBOT WIDGET ══ -->
+<button id="chat-fab" onclick="window.__openChat()">
+  <span class="fab-icon-wrap">
+    <svg class="fab-icon chat" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg class="fab-icon bot" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="4" y="8" width="16" height="12" rx="3"/>
+      <circle class="bot-eye" cx="9" cy="14" r="1.3" fill="currentColor" stroke="none"/>
+      <circle class="bot-eye" cx="15" cy="14" r="1.3" fill="currentColor" stroke="none"/>
+      <path d="M9 17.3h6"/>
+      <line x1="12" y1="8" x2="12" y2="4"/>
+      <circle cx="12" cy="3" r="1.1" fill="currentColor" stroke="none"/>
+      <line x1="2" y1="12" x2="4" y2="12"/>
+      <line x1="20" y1="12" x2="22" y2="12"/>
+    </svg>
+  </span>
+  Ask Zenith
+  <span class="fab-dot"></span>
+</button>
+
+<div id="chat-panel">
+  <div class="chat-head">
+    <div class="chat-avatar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="4" y="8" width="16" height="12" rx="3"/>
+        <circle class="bot-eye" cx="9" cy="14" r="1.4" fill="currentColor" stroke="none"/>
+        <circle class="bot-eye" cx="15" cy="14" r="1.4" fill="currentColor" stroke="none"/>
+        <path d="M9 17.4h6"/>
+        <line x1="12" y1="8" x2="12" y2="4"/>
+        <circle cx="12" cy="3" r="1.2" fill="currentColor" stroke="none"/>
+        <line x1="2" y1="12" x2="4" y2="12"/>
+        <line x1="20" y1="12" x2="22" y2="12"/>
+      </svg>
+    </div>
+    <div class="chat-head-txt">
+      <div class="chat-head-name">Zenith</div>
+      <div class="chat-head-sub"><span class="hdot2"></span>Answers grounded in Sai Raj's resume</div>
+    </div>
+    <button id="chat-close" onclick="window.__closeChat()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div id="chat-body"></div>
+  <div class="chat-suggest" id="chat-suggest">
+    <span class="sg-chip" data-q="What are you currently working on?">Current role?</span>
+    <span class="sg-chip" data-q="What tech stack do you use most?">Tech stack?</span>
+    <span class="sg-chip" data-q="Tell me about the Remote Plant Monitoring project.">IoT project?</span>
+    <span class="sg-chip" data-q="Are you open to new opportunities right now?">Open to work?</span>
+  </div>
+  <form id="chat-form">
+    <input id="chat-input" type="text" placeholder="Ask about my experience…" autocomplete="off" />
+    <button id="chat-send" type="submit">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
 /* ── CURSOR ── */
 const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
@@ -1067,8 +779,6 @@ window.addEventListener('scroll',()=>{
   const s=scrollY;
   plate.classList.toggle('stuck',s>40);
   prog.style.width=(s/(document.documentElement.scrollHeight-innerHeight)*100)+'%';
-
-  /* active link */
   const ids=['about','skills','experience','projects','education','contact'];
   let cur='about';
   ids.forEach(id=>{
@@ -1080,7 +790,6 @@ window.addEventListener('scroll',()=>{
   });
 },{passive:true});
 
-/* ── 3D NAV MOUSE TILT ── */
 const scene=document.getElementById('navScene');
 scene.addEventListener('mousemove',e=>{
   if(!plate.classList.contains('stuck')) return;
@@ -1105,6 +814,296 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
   });
 });
+
+/* ═══════════════════════════════════
+   THREE.JS — HERO SIGNATURE SCENE
+   A node-and-edge network drifting in 3D,
+   evoking the dashboards / telemetry systems
+   Sai Raj builds (data points, connected).
+═══════════════════════════════════ */
+(function initHero3D(){
+  const canvas = document.getElementById('hero-canvas');
+  const heroInner = canvas.closest('.hero-inner');
+  if(!window.THREE || !canvas) return;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
+
+  const scene3 = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(52, 1, 0.1, 100);
+  camera.position.set(0, 0, 13);
+
+  function size(){
+    const w = heroInner.clientWidth, h = heroInner.clientHeight;
+    renderer.setSize(w,h,false);
+    camera.aspect = w/h;
+    camera.updateProjectionMatrix();
+  }
+  size();
+  window.addEventListener('resize', size);
+
+  // Node cloud
+  const NODE_COUNT = 46;
+  const nodes = [];
+  const nodeGeo = new THREE.SphereGeometry(0.045, 8, 8);
+  const nodeMat = new THREE.MeshBasicMaterial({ color: 0x9ab4ff });
+  const nodeGroup = new THREE.Group();
+
+  for(let i=0;i<NODE_COUNT;i++){
+    const m = new THREE.Mesh(nodeGeo, nodeMat);
+    const r = 4.6 + Math.random()*1.6;
+    const theta = Math.random()*Math.PI*2;
+    const phi = Math.acos((Math.random()*2)-1);
+    m.position.set(
+      r*Math.sin(phi)*Math.cos(theta),
+      r*Math.sin(phi)*Math.sin(theta)*0.55,
+      r*Math.cos(phi)
+    );
+    m.userData.base = m.position.clone();
+    m.userData.phase = Math.random()*Math.PI*2;
+    nodeGroup.add(m);
+    nodes.push(m);
+  }
+  scene3.add(nodeGroup);
+
+  // Connections between nearby nodes
+  const lineMat = new THREE.LineBasicMaterial({ color: 0x3d56a0, transparent:true, opacity:0.35 });
+  const linePositions = [];
+  for(let i=0;i<nodes.length;i++){
+    for(let j=i+1;j<nodes.length;j++){
+      if(nodes[i].position.distanceTo(nodes[j].position) < 2.3){
+        linePositions.push(nodes[i].position.x, nodes[i].position.y, nodes[i].position.z);
+        linePositions.push(nodes[j].position.x, nodes[j].position.y, nodes[j].position.z);
+      }
+    }
+  }
+  const lineGeo = new THREE.BufferGeometry();
+  lineGeo.setAttribute('position', new THREE.Float32BufferAttribute(linePositions, 3));
+  const lines = new THREE.LineSegments(lineGeo, lineMat);
+  scene3.add(lines);
+
+  // Ambient particle dust
+  const dustGeo = new THREE.BufferGeometry();
+  const dustCount = 120;
+  const dustPos = new Float32Array(dustCount*3);
+  for(let i=0;i<dustCount;i++){
+    dustPos[i*3] = (Math.random()-0.5)*16;
+    dustPos[i*3+1] = (Math.random()-0.5)*7;
+    dustPos[i*3+2] = (Math.random()-0.5)*10 - 2;
+  }
+  dustGeo.setAttribute('position', new THREE.Float32BufferAttribute(dustPos,3));
+  const dustMat = new THREE.PointsMaterial({ color:0x6f87d6, size:0.03, transparent:true, opacity:0.5 });
+  const dust = new THREE.Points(dustGeo, dustMat);
+  scene3.add(dust);
+
+  nodeGroup.rotation.y = -0.4;
+  lines.rotation.y = -0.4;
+
+  let mouseX = 0, mouseY = 0;
+  heroInner.addEventListener('mousemove', e=>{
+    const rect = heroInner.getBoundingClientRect();
+    mouseX = ((e.clientX-rect.left)/rect.width - 0.5);
+    mouseY = ((e.clientY-rect.top)/rect.height - 0.5);
+  });
+
+  const clock = new THREE.Clock();
+  let rafId;
+  function animate(){
+    rafId = requestAnimationFrame(animate);
+    const t = clock.getElapsedTime();
+
+    nodeGroup.rotation.y += 0.0011;
+    lines.rotation.y = nodeGroup.rotation.y;
+    dust.rotation.y -= 0.0004;
+
+    nodes.forEach(n=>{
+      n.position.y = n.userData.base.y + Math.sin(t*0.6 + n.userData.phase)*0.12;
+    });
+    // rebuild line positions to follow the gentle float
+    const arr = lineGeo.attributes.position.array;
+    let idx = 0;
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        if(nodes[i].userData.base.distanceTo(nodes[j].userData.base) < 2.3){
+          arr[idx++] = nodes[i].position.x; arr[idx++] = nodes[i].position.y; arr[idx++] = nodes[i].position.z;
+          arr[idx++] = nodes[j].position.x; arr[idx++] = nodes[j].position.y; arr[idx++] = nodes[j].position.z;
+        }
+      }
+    }
+    lineGeo.attributes.position.needsUpdate = true;
+
+    camera.position.x += (mouseX*1.6 - camera.position.x)*0.03;
+    camera.position.y += (-mouseY*0.9 - camera.position.y)*0.03;
+    camera.lookAt(0,0,0);
+
+    renderer.render(scene3, camera);
+  }
+  animate();
+
+  // Pause rendering when hero is off-screen (perf)
+  const hobs = new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){ if(!rafId) animate(); }
+      else { cancelAnimationFrame(rafId); rafId = null; }
+    });
+  },{threshold:0});
+  hobs.observe(heroInner);
+})();
+
+/* ═══════════════════════════════════
+   CHATBOT — "Ask Zenith"
+   Zenith is an AI assistant embedded in the site that answers
+   about Sai Raj, grounded entirely in the resume content below.
+   Calls the Anthropic API (claude-sonnet-4-6).
+═══════════════════════════════════ */
+(function initChat(){
+  const RESUME_CONTEXT = `
+SAI RAJ — Senior Software Executive
+Noida, Uttar Pradesh, India | +91 888 774 9394 | sairajpandiya@gmail.com | linkedin.com/in/sairaj05
+
+PROFESSIONAL SUMMARY
+Results-driven Full Stack Software Developer with 2+ years of hands-on experience designing, building, and
+deploying scalable web applications using React.js, Next.js, Node.js, and .NET. Adept at engineering
+centralized corporate dashboards, optimizing complex workflows, and integrating real-time telemetry tracking.
+Track record of improving data transparency, streamlining internal operations, and automating delivery
+pipelines in production environments.
+
+EXPERIENCE
+Senior Software Executive — Onremote Telecom, Noida (Jun 2026 – Present)
+- Architected a Work Report Dashboard giving 100% data transparency into daily/weekly/monthly employee productivity.
+- Engineered core CRM enterprise modules for operational workflow and client data management.
+- Designed automated field-employee tracking systems for asset tracking and resource management.
+- Built a centralized Customer Ticket Control interface for the NOC team, reducing resolution response times.
+- Built an enterprise-grade Inventory Dashboard for monitoring and auditing physical hardware infrastructure.
+
+Software Developer — Dizon Technologies, Noida (May 2025 – May 2026)
+- Developed and maintained master dashboards for Acer systems (real-time monitoring & analytics).
+- Designed scalable web forms for daily operational data updates across Lenovo systems.
+- Built secure REST APIs using .NET and SQL Server for enterprise workflows.
+- Improved system performance and data processing efficiency through backend optimization.
+- Collaborated cross-functionally to deliver production-ready features.
+
+Full Stack Developer — Onremote Telecom, Noida (Nov 2023 – Nov 2024)
+- Developed a responsive internal web platform for operational workflows and tracking metrics.
+- Built and deployed the company website using React.js and Bootstrap.
+- Integrated external APIs with frontend interfaces for reliable real-time data flow.
+- Optimized performance and minimized bugs through structured testing and debugging.
+
+Web Developer — UNOS, Noida (Jun 2023 – Nov 2023)
+- Developed and deployed two responsive corporate websites with strong accessibility.
+- Ensured cross-browser compatibility and optimized asset loading speed.
+
+TECHNICAL SKILLS
+Languages: JavaScript, C#, SQL, Python
+Frontend: React.js, Next.js, Angular, HTML5, CSS3, Bootstrap
+Backend: Node.js, .NET, REST APIs, JWT Authentication, RBAC
+DevOps & Deployment: CI/CD Pipelines, AWS, Linux (Ubuntu), Nginx, PM2, Docker
+Tools & Methodologies: Git, Postman, Power BI, System Design, Performance Optimization
+
+PROJECTS
+Remote Plant Monitoring System (IoT) — end-to-end IoT system for real-time monitoring, telemetry tracking,
+and environmental automation; smart watering triggers driven by multi-sensor environmental data.
+
+EDUCATION
+B.Tech, Computer Science & Engineering — Galgotia College of Engineering & Technology, Noida (Aug 2019 – May 2023)
+
+AVAILABILITY
+Actively open to new full-time opportunities, available to join immediately.
+`.trim();
+
+  const SYSTEM_PROMPT = `You are Zenith, a friendly AI assistant embedded in Sai Raj's personal portfolio website. A visitor is asking you questions about Sai Raj's background. Answer ONLY using the resume content provided below — never invent employers, dates, numbers, or skills that aren't in it. Speak about Sai Raj in third person (e.g. "Sai Raj built...", "He's currently..."). If asked something the resume doesn't cover (e.g. salary expectations, personal life, opinions on unrelated topics), politely say it's not something you can answer and suggest the visitor reach out to Sai Raj directly via email or LinkedIn. Keep answers warm, concise, and conversational — 2-5 sentences, no headers or bullet lists unless the question truly needs a short list. Stay in character as Zenith and never say you are Claude or reference Anthropic.
+
+RESUME CONTENT:
+${RESUME_CONTEXT}`;
+
+  const fab = document.getElementById('chat-fab');
+  const panel = document.getElementById('chat-panel');
+  const body = document.getElementById('chat-body');
+  const form = document.getElementById('chat-form');
+  const input = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('chat-send');
+  const suggestWrap = document.getElementById('chat-suggest');
+
+  let history = []; // {role, content}
+  let opened = false;
+
+  function addMsg(text, who){
+    const d = document.createElement('div');
+    d.className = 'msg ' + who;
+    d.textContent = text;
+    body.appendChild(d);
+    body.scrollTop = body.scrollHeight;
+    return d;
+  }
+  function addTyping(){
+    const d = document.createElement('div');
+    d.className = 'msg bot typing';
+    d.innerHTML = '<span></span><span></span><span></span>';
+    body.appendChild(d);
+    body.scrollTop = body.scrollHeight;
+    return d;
+  }
+
+  window.__openChat = function(){
+    panel.classList.add('open');
+    opened = true;
+    if(body.children.length === 0){
+      addMsg("Hey, I'm Zenith 🤖 Ask me anything about Sai Raj's experience, stack, or projects — I'll answer straight from his resume.", 'bot');
+    }
+    setTimeout(()=>input.focus(), 250);
+  };
+  window.__closeChat = function(){
+    panel.classList.remove('open');
+    opened = false;
+  };
+  fab.addEventListener('click', ()=> opened ? window.__closeChat() : window.__openChat());
+
+  suggestWrap.addEventListener('click', (e)=>{
+    const chip = e.target.closest('.sg-chip');
+    if(!chip) return;
+    input.value = chip.dataset.q;
+    form.requestSubmit();
+  });
+
+  async function askClaude(question){
+    history.push({ role:'user', content: question });
+    const typingEl = addTyping();
+    sendBtn.disabled = true;
+    try{
+      const response = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-6',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: history
+        })
+      });
+      const data = await response.json();
+      const textBlock = (data.content || []).find(b => b.type === 'text');
+      const answer = textBlock ? textBlock.text : "Sorry, I couldn't quite get that — mind asking again?";
+      typingEl.remove();
+      addMsg(answer, 'bot');
+      history.push({ role:'assistant', content: answer });
+    }catch(err){
+      console.error('Chat error:', err);
+      typingEl.remove();
+      addMsg("Hmm, I'm having trouble connecting right now. Feel free to reach me directly at sairajpandiya@gmail.com in the meantime.", 'bot');
+    }finally{
+      sendBtn.disabled = false;
+    }
+  }
+
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const q = input.value.trim();
+    if(!q) return;
+    addMsg(q, 'user');
+    input.value = '';
+    askClaude(q);
+  });
+})();
 </script>
 </body>
 </html>
